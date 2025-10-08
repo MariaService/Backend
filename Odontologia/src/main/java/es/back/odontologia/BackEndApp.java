@@ -9,12 +9,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 
 @SpringBootApplication
-@ComponentScan(basePackages = "es.logicacenter.notificador")
+@ComponentScan(basePackages = "es.back.odontologia")
 @EnableScheduling
-public class NotificadorApp {
+public class BackEndApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NotificadorApp.class, args);
+		SpringApplication.run(BackEndApp.class, args);
 		// cambio
 	}
 
