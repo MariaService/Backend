@@ -1,5 +1,6 @@
 package es.back.odontologia.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +41,34 @@ public class UsuarioService {
 		usuario.setNombreCompleto(usr.getNombreCompleto());
 		return usuarioRepository.save(usr);
 	}
+	
+
+	    public Optional<Usuario> obtenerPorId(Long id) {
+	        return usuarioRepository.findById(id);
+	    }
+
+	    public Optional<Usuario> actualizarUsuario(Long id, Usuario usrActualizado) {
+	        return usuarioRepository.findById(id).map(usuario -> {
+	            usuario.setNickName(usrActualizado.getNickName());
+	            usuario.setEmail(usrActualizado.getEmail());
+	            if (usrActualizado.getPassword() != null && !usrActualizado.getPassword().isBlank()) {
+	               // usuario.setPassword(passwordEncoder.encode(usrActualizado.getPassword()));
+	            }
+	            return usuarioRepository.save(usuario);
+	        });
+	    }
+
+	    
+	    public List<Usuario> obtenerTodos() {
+	        return usuarioRepository.findAll();
+	    }
+	    
+	    public boolean eliminarUsuario(Long id) {
+	        if (usuarioRepository.existsById(id)) {
+	            usuarioRepository.deleteById(id);
+	            return true;
+	        }
+	        return false;
+	    }
 
 }
