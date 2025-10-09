@@ -11,9 +11,34 @@ import es.back.odontologia.repository.UsuarioRepository;
 @Service
 public class UsuarioService {
 	@Autowired
-    private UsuarioRepository usuarioRepository;
-	
-	 public Optional<Usuario> login(String email, String password) {
-	        return usuarioRepository.login(email, password);
+	private UsuarioRepository usuarioRepository;
+
+	 public Optional<Usuario> login(String nickName, String password) {
+	        return usuarioRepository.login(nickName, password);
 	    }
+
+//	private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//
+//	public Optional<Usuario> login(String nickName, String password) {
+//		Optional<Usuario> usuarioOpt = usuarioRepository.findByNickName(nickName);
+//
+//		if (usuarioOpt.isPresent()) {
+//			Usuario usuario = usuarioOpt.get();
+//			if (passwordEncoder.matches(password, usuario.getPassword())) {
+//				return Optional.of(usuario); // Contraseña correcta
+//			}
+//		}
+//
+//		return Optional.empty(); // Usuario no encontrado o contraseña incorrecta
+
+//	}
+//
+	public Usuario registrarUsuario(Usuario usr) {
+		Usuario usuario = new Usuario();
+		usuario.setNickName(usr.getNickName());
+		usuario.setPassword(usr.getPassword()); // Encriptar password
+		usuario.setNombreCompleto(usr.getNombreCompleto());
+		return usuarioRepository.save(usr);
+	}
+
 }

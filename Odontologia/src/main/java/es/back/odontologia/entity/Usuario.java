@@ -25,6 +25,10 @@ public class Usuario {
 
     @Column(name = "Fecha_Creacion")
     private Date fechaCreacion;
+    
+    @Column(name = "Fecha_Nac")
+    private Date fechaNac;
+
 
     @Column(name = "fecha_modificacion")
     private Date fechaModificacion;
@@ -44,8 +48,11 @@ public class Usuario {
     @Column(name = "NombreCompleto")
     private String nombreCompleto;
 
+    
     private String tel;
     private String notas;
+    @Column(name = "NickName")
+    private String nickName;
 	public Long getId() {
 		return id;
 	}
@@ -112,13 +119,29 @@ public class Usuario {
 	public void setNotas(String notas) {
 		this.notas = notas;
 	}
+	
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+	public Date getFechaNac() {
+		return fechaNac;
+	}
+	public void setFechaNac(Date fechaNac) {
+		this.fechaNac = fechaNac;
+	}
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", email=" + email + ", password=" + password + ", fechaCreacion=" + fechaCreacion
-				+ ", fechaModificacion=" + fechaModificacion + ", estatus=" + estatus + ", rol=" + rol + ", fotografia="
-				+ fotografia + ", nombreCompleto=" + nombreCompleto + ", tel=" + tel + ", notas=" + notas + "]";
+				+ ", fechaNac=" + fechaNac + ", fechaModificacion=" + fechaModificacion + ", estatus=" + estatus
+				+ ", rol=" + rol + ", fotografia=" + fotografia + ", nombreCompleto=" + nombreCompleto + ", tel=" + tel
+				+ ", notas=" + notas + ", nickName=" + nickName + "]";
 	}
-
+	
+	
+	
     // Getters y Setters
     
     

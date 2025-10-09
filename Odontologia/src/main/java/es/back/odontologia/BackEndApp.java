@@ -4,13 +4,11 @@ package es.back.odontologia;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.scheduling.annotation.EnableScheduling;
 
 
 
 @SpringBootApplication
-@ComponentScan(basePackages = "es.back.odontologia")
-@EnableScheduling
+@ComponentScan(basePackages = "es.back")
 public class BackEndApp {
 
 	public static void main(String[] args) {

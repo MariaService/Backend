@@ -12,7 +12,13 @@ import es.back.odontologia.entity.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	
-	@Query("SELECT u FROM Usuario u WHERE u.email = :email AND u.password = :password AND u.estatus = 1")
-	Optional<Usuario> login(@Param("email") String email, @Param("password") String password);
-
+	Optional<Usuario> findByNickName(String nickName);
+	
+	@Query("SELECT u FROM Usuario u WHERE u.nickName = :nickName AND u.password = :password AND u.estatus = 1")
+	Optional<Usuario> login(@Param("nickName") String email, @Param("password") String password);
+	
+	
+	@Query("SELECT u FROM Usuario u WHERE u.email = :dato OR u.tel = :dato")
+	Optional<Usuario> findByEmailOrTel(@Param("dato") String dato);
+	
 }
